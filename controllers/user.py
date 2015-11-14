@@ -35,7 +35,7 @@ def register():
             error = 'You have to enter a valid email address'
         elif not request.form['password']:
             error = 'You have to enter a password'
-        elif check_password_hash(request.form['password'], request.form['password-confirm']):
+        elif request.form['password'] != request.form['password-confirm']:
             error = 'The two passwords do not match'
         elif functions.get_user_id(request.form['username']) is not None:
             error = 'The username is already taken'
